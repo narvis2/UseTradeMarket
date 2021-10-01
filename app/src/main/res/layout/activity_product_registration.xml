@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.example.usetrademarket.presentation.view.registration.ProductRegistrationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.view.registration.ProductRegistrationActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:elevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="?attr/toolbarWithArrowButtonStyle">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="@string/registration_product"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toTopOf="@+id/productUploadButton">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/imageTextTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_registration_image"
+                    android:textStyle="bold"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="20dp"/>
+
+                <LinearLayout
+                    android:id="@+id/imageLayout"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/image1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:onClick="@{()->vm.pickImage(0)}"
+                        android:src="@drawable/ic_photo"/>
+
+                    <ImageView
+                        android:id="@+id/image2"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:onClick="@{()->vm.pickImage(1)}"
+                        android:src="@drawable/ic_photo"/>
+
+                    <ImageView
+                        android:id="@+id/image3"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:onClick="@{()->vm.pickImage(2)}"
+                        android:src="@drawable/ic_photo"/>
+
+                    <ImageView
+                        android:id="@+id/image4"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_margin="10dp"
+                        android:onClick="@{()->vm.pickImage(3)}"
+                        android:src="@drawable/ic_photo"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_name_and_description"
+                    android:textStyle="bold"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginStart="20dp"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputProductName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/product_name"
+                        app:hintTextColor="?attr/colorPrimary"
+                        app:boxStrokeColor="@color/orange"
+                        app:helperTextEnabled="true"
+                        android:layout_marginTop="30dp"
+                        app:counterEnabled="true"
+                        android:layout_marginHorizontal="10dp"
+                        app:counterMaxLength="40"
+                        app:helperText="@string/product_name_constraint"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={vm.productName}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputProductDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/product_description"
+                        android:layout_marginTop="30dp"
+                        app:helperTextEnabled="true"
+                        app:boxStrokeColor="@color/orange"
+                        app:counterEnabled="true"
+                        android:layout_marginHorizontal="10dp"
+                        app:hintTextColor="?attr/colorPrimary"
+                        app:counterMaxLength="500"
+                        app:helperText="1자 이상 500자 이하로 작성해주세요."
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={vm.description}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/category"
+                    android:layout_marginTop="40dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:layout_marginStart="20dp"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:onItemSelectedListener="@{vm}"
+                    android:entries="@{vm.categories}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_price"
+                    android:layout_marginTop="40dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/orange"
+                    android:textSize="16sp"
+                    android:layout_marginStart="20dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputProductPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/product_price"
+                    android:layout_marginTop="15dp"
+                    app:helperTextEnabled="true"
+                    app:boxStrokeColor="@color/orange"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="8"
+                    android:layout_marginHorizontal="10dp"
+                    app:hintTextColor="?attr/colorPrimary"
+                    app:helperText="Ex) 1000"
+                    android:layout_marginBottom="20dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="@={vm.price}"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/productUploadButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/registration_product"
+            app:strokeColor="@color/pink"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="30dp"
+            android:onClick="@{()-> vm.register()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

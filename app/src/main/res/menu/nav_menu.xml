@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu_product"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_message"
+            android:icon="@drawable/ic_chat"
+            android:title="@string/my_inquiry" />
+    </group>
+
+    <group
+        android:id="@+id/menu_login_logout"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_logout"
+            android:icon="@drawable/ic_lock"
+            android:title="@string/logout" />
+    </group>
+
+</menu>
